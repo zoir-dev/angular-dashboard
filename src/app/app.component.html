@@ -1,1 +1,7 @@
-<h1 class="text-5xl">Project is ready to work!</h1>
+<app-test></app-test>
+<h1 class="text-5xl">{{"Hi"|translate}}</h1>
+<select #lang (change)="changeLang(lang.value)">
+  <option value="uz">uz</option>
+  <option value="en">en</option>
+  <option value="ru">ru</option>
+</select>
