@@ -1,0 +1,28 @@
+  <div mat-dialog-content class="max-w-full">
+    <h2 class="text-center text-[25px] smd:text-[20px] pb-[10px]">{{name?('main.Edit'|translate):('main.Add'|translate)}}</h2>
+      <form [formGroup]="myForm" (ngSubmit)="submit()" class="flex flex-col gap-[30px] w-[350px] max-w-full">
+        <mat-form-field appearance="fill" class="example-full-width">
+          <mat-label class="">{{"main.Name"|translate}}</mat-label>
+          <input
+            matInput
+            placeholder="{{'main.Name'|translate}}"
+            formControlName="name"
+            class="dark:!text-white"
+          />
+          <mat-error *ngIf="getError('name').hasError('required')" class="text-[16px] smd:text-[14px]">{{('main.Name'|translate)+('main.is Required'|translate)}}</mat-error>
+          <mat-error *ngIf="getError('name').hasError('minlength')" class="text-[16px] smd:text-[14px]">{{('main.MinLength is'|translate)+(getError('name').errors?.['minlength'].requiredLength)}}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="example-full-width">
+          <mat-label class="">{{'main.Job'|translate}}</mat-label>
+          <input
+            matInput
+            placeholder="{{'main.Job'|translate}}"
+            formControlName="job"
+            class="dark:!text-white"
+          />
+          <mat-error *ngIf="getError('job').hasError('required')" class="text-[16px] smd:text-[14px]">{{('main.Job'|translate)+('main.is Required'|translate)}}</mat-error>
+          <mat-error *ngIf="getError('job').hasError('minlength')" class="text-[16px] smd:text-[14px]">{{('main.MinLength is'|translate)+(getError('job').errors?.['minlength'].requiredLength)}}</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" [disabled]="loading||myForm.invalid">{{loading?(name?('main.Editing'|translate):('main.Adding'|translate)):(name?('main.Edit'|translate):('main.Add'|translate))}}</button>
+      </form>
+  </div>

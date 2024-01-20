@@ -1,0 +1,57 @@
+<div class="px-[50px] pt-[50px] md:px-[10px]" *ngIf="!(loading$|async)">
+  <div class="flex justify-between items-center gap-[30px] smd:flex-col">
+    <h2 class="text-[25px] smd:text-[20px]">{{'main.Users'|translate}}</h2>
+    <div class="flex items-center gap-4 smd:justify-between smd:w-full">
+      <mat-form-field class="w-full max-w-[300px]">
+        <mat-label>{{'main.Search'|translate}}</mat-label>
+        <input matInput type="search" type="fill" #search (keyup)="applyFilter($event)">
+      </mat-form-field>
+      <button mat-raised-button class="h-max" color="primary" (click)="addUser()"><span class="smd:hidden">{{"main.Add"|translate}}</span> <mat-icon class="smd:!m-0 !w-9">add</mat-icon></button>
+    </div>
+  </div>
+  <div class="w-full overflow-x-auto">
+    <table mat-table [dataSource]="dataSource"  matSort class="!bg-[transparent] w-full !min-w-[500px] flex-nowrap">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id" class="smd:!text-[12px]">{{"main.Id"|translate}}</th>
+        <td mat-cell *matCellDef="let user" class="smd:text-[12px]"> {{ user.id }} </td>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by email" class="smd:!text-[12px]">{{'main.Email'|translate}}</th>
+        <td mat-cell *matCellDef="let user" class="smd:text-[12px]"> {{ user.email }} </td>
+      </ng-container>
+      <ng-container matColumnDef="first_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name" class="smd:!text-[12px]">{{"main.Name"|translate}}</th>
+        <td mat-cell *matCellDef="let user" class="smd:text-[12px]"> {{ user.first_name+" "+user.last_name }} </td>
+      </ng-container>
+      <ng-container matColumnDef="avatar">
+        <th mat-header-cell *matHeaderCellDef class="smd:!text-[12px]">{{"main.Avatar"|translate}}</th>
+        <td mat-cell *matCellDef="let user" class="smd:text-[12px]" [routerLink]="['/'+user.id,]">
+          <div class="relative w-[40px] flex">
+            <span class="animate-ping absolute inline-flex h-[80%] top-[10%] left-[10%] w-[80%] rounded-full bg-sky-400 opacity-75"></span>
+            <img src="{{ user.avatar }}" alt="Avatar" width="40" height="40" class="rounded-full cursor-pointer relative"/>
+          </div>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="smd:!text-[12px]">{{"main.Actions"|translate}}</th>
+        <td mat-cell *matCellDef="let user" class="smd:text-[12px]">
+          <div class="flex items-center gap-3">
+            <mat-icon class="text-[20px] smd:text-[18px] p-[5px] mr-[5px] cursor-pointer active:scale-75 active:duration-300" color="primary"(click)="editUser(user)">edit</mat-icon>
+            <mat-icon class="text-[20px] smd:text-[18px] p-[5px] ml-[5px] cursor-pointer active:scale-75 active:duration-300" color="warn"(click)="deleteUser(user)" *ngIf="!((usersService.loading$|async)&&(deletingUser?.id===user.id))">delete</mat-icon>
+            <mat-spinner color="warn" class="!w-[20px] !h-[20px] ml-[9px]" *ngIf="((usersService.loading$|async)&&(deletingUser?.id===user.id))"></mat-spinner>
+          </div>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns" class="dark:!text-white duration-500"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="dark:!text-white duration-500"></tr>
+    </table>
+  </div>
+  </div>
+
+  <div class="flex items-center justify-center pt-[40px] smd:pt-[20px] gap-[10px]" *ngIf="!(loading$|async)">
+    <span *ngFor="let p of getTotalPages()" class="rounded-full border-primary border-[1px] !bg-[transparent]  cursor-pointer select-none w-[30px] h-[30px] smd:w-[25px] smd:h-[25px] smd:text-[14px] flex items-center justify-center {{p===page&&'!bg-primary text-white duration-500'}} duration-500" (click)="changePage(p)">{{p}}</span>
+  </div>
+
+  <div class="flex justify-center w-full pt-[20%]" *ngIf="(loading$|async)">
+    <mat-spinner class="!w-[50px]"></mat-spinner>
+  </div>

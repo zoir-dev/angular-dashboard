@@ -1,4 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html,
 body {
@@ -10,8 +12,18 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.mat-mdc-text-field-wrapper {
+  @apply !duration-500 !transition-colors
+}
+
+.dark .mat-mdc-text-field-wrapper {
+  @apply !bg-slate-400
+}
+
+.mat-mdc-form-field-bottom-align::before {
+  display: none !important;
+}
+
+.cdk-overlay-dark-backdrop {
+  @apply !backdrop-blur-sm
 }

@@ -1,3 +1,44 @@
 {
-  "Hi":"Assalamu alaikum"
+  "main": {
+    "Users": "Foydalanuvchilar",
+    "Add": "Qo'shish",
+    "Adding": "Qo'shilmoqda",
+    "Edit": "Tahrirlash",
+    "Editing": "Tahrirlanmoqda",
+    "Search": "Qidirish",
+    "Id": "Id",
+    "Email": "Elektron pochta",
+    "Name": "Ism",
+    "Avatar": "Avatar",
+    "Actions": "Harakatlar",
+    "@Copyright Just*Developer LLC.": "@Nashr hakki Just*Developer LLC.",
+    "Log out": "Chiqish",
+    "Login": "Kirish",
+    "is Required":" majburiy",
+    "MinLength is":"Minimal",
+    "Home":"Bosh sahifa",
+    "Job":"Kasb"
+  },
+  "auth": {
+    "Sign Up": "Ro'yxatdan o'tish",
+    "Sign In": "Tizimga kirish",
+    "Password":"Parol",
+    "Have an account?":"Akkauntingiz bormi?",
+    "Haven't account yet?":"Akkauntingiz yo'qmi?",
+    "Login":"Kirish",
+    "Sign":"Ro'yxatdan o'tish",
+    "It should be email":"Email kiriting",
+    "Loading":"Kirilmoqda"
+  },
+  "snackbar": {
+    "deleteUserNotLoggedIn": "O'chirish uchun ro'yxatdan o'ting",
+    "editUserNotLoggedIn": "Tahrirlash uchun ro'yxatdan o'ting",
+    "addUserNotLoggedIn": "Qo'shish uchun ro'yxatdan o'ting",
+    "Close":"Yopish",
+    "registrationError": "Ro'yxatdan o'tishda xatolik yuz berdi: ",
+    "registrationSuccess": "Tizimga muvaffaqiyatli ro'yxatdan o'tdingiz",
+    "loginError": "Kirishda xatolik yuz beryapti: ",
+    "loginSuccess": "Tizimga muvaffaqiyatli kirdingiz",
+    "logoutSuccess": "Tizimdan muvaffaqiyatli chiqdingiz"
+  }
 }

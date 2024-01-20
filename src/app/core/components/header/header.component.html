@@ -1,0 +1,16 @@
+<mat-toolbar color="primary" class="flex items-center justify-between dark:!bg-slate-900 dark:!text-white duration-500 transition-colors px-[20px] {{forAuth&&'!bg-[transparent] !text-primary'}}">
+  <img class="w-[150px] md:w-[120px] sm:w-[100px]" src="../../../../assets/logo.svg" alt="">
+  <div class="flex items-center gap-[20px]">
+    <select #lang class="!bg-[transparent] text-white dark:!text-white duration-500 cursor-pointer {{forAuth&&'!text-black'}}" (change)="changeLang(lang.value)" [value]="langService.lang$|async">
+      <option value="uz">uz</option>
+      <option value="en">en</option>
+    </select>
+    <div class="relative flex items-center">
+      <mat-icon class="m-0 cursor-pointer duration-500 rotate-90 opacity-100 {{!darkMode&& '!opacity-0 !z-[-1] !rotate-45'}}" (click)="changeMode(false)">brightness_7</mat-icon>
+      <mat-icon class="m-0 cursor-pointer duration-500 rotate-[30deg] opacity-100 {{darkMode&&'!opacity-0 !z-[-1] !rotate-[120deg]'}} absolute left-0" (click)="changeMode(true)">brightness_2</mat-icon>
+    </div>
+    <button mat-button color="primary" *ngIf="!token && !forAuth" class="!text-white" (click)="login()">{{"main.Login"|translate}}</button>
+    <button mat-stroked-button color="primary" *ngIf="forAuth" class=" dark:!text-white" (click)="navigateToHome()">{{"main.Home"|translate}}</button>
+    <button mat-button color="warn" *ngIf="token && !forAuth" (click)="logOut()">{{'main.Log out'|translate}}</button>
+  </div>
+</mat-toolbar>

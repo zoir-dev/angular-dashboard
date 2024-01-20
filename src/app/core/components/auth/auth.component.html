@@ -1,0 +1,29 @@
+<mat-card class="w-[350px] p-[20px] dark:bg-slate-400">
+  <form [formGroup]="myForm" (ngSubmit)="submit()" class="flex flex-col gap-[30px] ">
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label class="">{{'main.Email'|translate}}</mat-label>
+      <input
+      matInput
+      placeholder="Email"
+      formControlName="email"
+      class="dark:!text-white"
+      >
+      <mat-error *ngIf="getError('email').hasError('required')" class="text-[14px]">{{('main.Email'|translate)+('main.is Required'|translate)}}</mat-error>
+      <mat-error *ngIf="getError('email').hasError('email')" class="text-[14px]">{{'auth.It should be email'|translate}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label class="">{{'auth.Password'|translate}}</mat-label>
+      <input
+      matInput
+      placeholder="Password"
+      formControlName="password"
+      class="dark:!text-white"
+      >
+      <mat-error *ngIf="getError('password').hasError('required')" class="text-[14px]">{{('auth.Password'|translate)+('main.is Required'|translate)}}</mat-error>
+      <mat-error *ngIf="getError('password').hasError('minlength')" class="text-[14px]">{{('main.MinLength is'|translate)+" "+getError('password').errors?.['minlength'].requiredLength}}</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="myForm.invalid||loading" type="submit" loading>{{!loading? (login?('auth.Sign In'|translate):('auth.Sign Up'|translate)):('auth.Loading'|translate)}} </button>
+    <p *ngIf="!login" class="text-[14px] text-right">{{'auth.Have an account?'|translate}} <span class="text-primary cursor-pointer" (click)="navigate('/auth/login')">{{'auth.Login'|translate}}</span></p>
+    <p *ngIf="login" class="text-[14px] text-right">{{"auth.Haven't account yet?"|translate}} <span class="text-primary cursor-pointer" (click)="navigate('/auth/sign')">{{'auth.Sign'|translate}}</span></p>
+  </form>
+</mat-card>

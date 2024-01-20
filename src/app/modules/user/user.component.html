@@ -1,0 +1,13 @@
+<div class="flex justify-center pt-[15%]">
+  <mat-card class="w-[350px] !bg-[transparent] p-[20px] relative">
+    <div *ngIf="!(loading$|async)">
+      <span class="absolute top-[10px] left-[10px]">{{user?.id}}</span>
+      <img src={{user?.avatar}} class="rounded-full mx-auto w-[120px]" loading="lazy" alt="">
+      <p class="text-center pt-3">{{user?.first_name+" "+user?.last_name}}</p>
+      <p class="text-center pt-2">{{user?.email}}</p>
+    </div>
+    <div class="w-full flex justify-center items-center h-[300px]" *ngIf="(loading$|async)">
+      <mat-spinner  class="w-[30px]"></mat-spinner>
+    </div>
+  </mat-card>
+</div>

@@ -1,3 +1,45 @@
 {
-  "Hi":"Hi"
+  "main":{
+    "Users": "Users",
+    "Add":"Add",
+    "Adding":"Adding",
+    "Edit":"Edit",
+    "Editing":"Editing",
+    "Search":"Search",
+    "Id":"Id",
+    "Email":"Email",
+    "Name":"Name",
+    "Avatar":"Avatar",
+    "Actions":"Actions",
+    "@Copyright Just*Developer LLC.":"@Copyright Just*Developer LLC.",
+    "Log out":"Log out",
+    "Login":"Login",
+    "is Required":" is Required",
+    "MinLength is":"MinLength is",
+    "Home":"Home",
+    "Job":"Job"
+  },
+  "auth":{
+    "Sign Up":"Sign Up",
+    "Sign In":"Sign In",
+    "Password":"Password",
+    "Have an account?":"Have an account?",
+    "Haven't account yet?":"Haven't account yet?",
+    "Login":"Login",
+    "Sign":"Sign",
+    "It should be email":"It should be email",
+    "Loading":"Loading"
+  },
+  "snackbar": {
+    "deleteUserNotLoggedIn": "You should login to delete",
+    "editUserNotLoggedIn": "You should login to edit",
+    "addUserNotLoggedIn": "You should login to add",
+    "Close":"Close",
+    "registrationError": "Error during registration: ",
+    "registrationSuccess": "Signed Up successfully",
+    "loginError": "Error during login: ",
+    "loginSuccess": "Signed In successfully",
+    "logoutSuccess": "Logged Out successfully"
+  }
+
 }
