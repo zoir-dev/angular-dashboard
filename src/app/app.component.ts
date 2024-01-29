@@ -15,6 +15,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule, RouterOutlet, AppModule, MatProgressSpinnerModule, NgIf],
+  styleUrl: "./app.component.css",
   providers: [LangService, TranslateService],
   templateUrl: './app.component.html',
 })

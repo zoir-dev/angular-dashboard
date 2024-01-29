@@ -13,6 +13,7 @@ import { AuthService } from '../../shared/services/auth/auth.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AppModule } from '../../app.module';
 
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -48,6 +49,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       this.dataSource.sort = this.sort
     }
   }
+
 
   changePage(page: number) {
     if (page >= 1 && page <= this.pages) {

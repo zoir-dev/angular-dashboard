@@ -6,8 +6,23 @@
       <option value="en">en</option>
     </select>
     <div class="relative flex items-center">
-      <mat-icon class="m-0 cursor-pointer duration-500 rotate-90 opacity-100 {{!darkMode&& '!opacity-0 !z-[-1] !rotate-45'}}" (click)="changeMode(false)">brightness_7</mat-icon>
+      <!-- <mat-icon class="m-0 cursor-pointer duration-500 rotate-90 opacity-100 {{!darkMode&& '!opacity-0 !z-[-1] !rotate-45'}}" (click)="changeMode(false)">brightness_7</mat-icon>
+
       <mat-icon class="m-0 cursor-pointer duration-500 rotate-[30deg] opacity-100 {{darkMode&&'!opacity-0 !z-[-1] !rotate-[120deg]'}} absolute left-0" (click)="changeMode(true)">brightness_2</mat-icon>
+
+      <div class="checkbox-wrapper-5">
+        <div class="check">
+          <input id="check-5" type="checkbox" [checked]="darkMode" (change)="changeMode($event)">
+          <label for="check-5"></label>
+        </div>
+      </div> -->
+
+      <div class="checkbox-wrapper-54">
+        <label class="switch">
+          <input type="checkbox" [checked]="darkMode" (change)="changeMode($event)" >
+          <span class="slider"></span>
+        </label>
+      </div>
     </div>
     <button mat-button color="primary" *ngIf="!token && !forAuth" class="!text-white" (click)="login()">{{"main.Login"|translate}}</button>
     <button mat-stroked-button color="primary" *ngIf="forAuth" class=" dark:!text-white" (click)="navigateToHome()">{{"main.Home"|translate}}</button>

@@ -25,13 +25,15 @@ export class HeaderComponent {
   darkMode: boolean = false;
   token!: string
 
+  test: any = ''
+
   constructor(private theme: ThemeService, private router: Router, public authService: AuthService, public langService: LangService) {
     this.theme.darkMode$.subscribe(val => this.darkMode = val)
     this.authService.token$.subscribe(val => this.token = val)
   }
 
-  changeMode(val: boolean) {
-    this.theme.changeMode(val)
+  changeMode(val: any) {
+    this.theme.changeMode(val.target.checked)
   }
 
   navigateToHome() {
@@ -50,6 +52,7 @@ export class HeaderComponent {
   changeLang(val: any) {
     this.langService.changeLang(val)
   }
+
 
 
 }
